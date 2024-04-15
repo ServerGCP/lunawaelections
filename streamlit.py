@@ -5,9 +5,9 @@ import streamlit as st
 import pandas as pd
 import requests, io
 
+st.set_page_config(page_title="Voting Data Dashboard", layout="wide")
 st_autorefresh(interval=30000, key='data_refresh')
 column_names = ['Num', 'Name', 'Vaas', 'Votes']
-st.set_page_config(page_title="Voting Data Dashboard", layout="wide")
 
 def fetch_data(url):
     try:
