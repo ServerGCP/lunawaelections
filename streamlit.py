@@ -19,7 +19,7 @@ def fetch_data(url):
         return None
     
 def main():
-    if st.button('Reload Now')
+    if st.button('Reload Now'):
         csv_data = fetch_data(api_url)
         if csv_data:
             data = pd.read_csv(io.StringIO(csv_data), names=column_names, index_col="Num")
