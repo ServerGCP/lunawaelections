@@ -33,11 +33,11 @@ def main():
                     marker=dict(color=px.colors.qualitative.Plotly)
                 )
             ])
-            angle = -45 if len(group['Name']) > 3 else -10
+            angle = -45 if len(group['Name']) > 3 else 0
             fig.update_layout(
                 title=f"Votes for {name}",
                 yaxis_title="Votes",
-                xaxis_tickangle=-angle,
+                xaxis_tickangle=angle,
                 yaxis=dict(dtick=1),
                 height=300,
                 width=300
