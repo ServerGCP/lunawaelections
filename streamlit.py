@@ -35,7 +35,6 @@ def main():
             ])
             fig.update_layout(
                 title=f"Votes for {name}",
-                xaxis_title="Member Name",
                 yaxis_title="Votes",
                 xaxis_tickangle=-45,
                 yaxis=dict(dtick=1),
