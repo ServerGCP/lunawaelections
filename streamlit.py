@@ -9,7 +9,7 @@ st.set_page_config(page_title="Voting Data Dashboard", layout="wide")
 st_autorefresh(interval=30000, key='data_refresh')
 column_names = ['Num', 'Name', 'Vaas', 'Votes']
 
-def fetch_data(url):
+def fetch_data():
     try:
         response = requests.get('https://lunawaelections-a3ea5ed4a880.herokuapp.com/stats/')
         if response.status_code == 200:
@@ -19,8 +19,7 @@ def fetch_data(url):
         return None
     
 def main():
-    if st.button('Reload Now'):
-        csv_data = fetch_data(api_url)
+        csv_data = fetch_data()
         if csv_data:
             data = pd.read_csv(io.StringIO(csv_data), names=column_names, index_col="Num")
             data["Name"] = data["Name"].str.split(' ').str[0]
