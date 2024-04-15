@@ -50,5 +50,6 @@ def main():
                 st.plotly_chart(fig, use_container_width=True)
     
 if __name__ == '__main__':
+    st.title("Lunawa Voting Dashboard")
     main()
     st_autorefresh(interval=30000, key='data_refresh')
