@@ -18,22 +18,23 @@ def fetch_data(url):
         return None
     
 def main():
-    col1, col2, col3 = st.columns(3)
-    api_url = col1.text_input('Enter the API URL', 'https://lunawaelections-a3ea5ed4a880.herokuapp.com/')
-    reload_time = col2.text_input('Auto Reload Dashboard (in Seconds)', '5')
-    # auto_reload = col3.checkbox("Auto-reload data", value=False)
+    # col1, col2, col3 = st.columns(3)
+    # api_url = col1.text_input('Enter the API URL', 'https://lunawaelections-a3ea5ed4a880.herokuapp.com/')
+    # reload_time = col2.text_input('Auto Reload Dashboard (in Seconds)', '5')
 
-    with col3:
-        col3_row1 = st.columns(1)
-        with col3_row1[0]:
-            auto_reload = st.checkbox("Auto-reload data", value=False)
+    # with col3:
+    #     col3_row1 = st.columns(1)
+    #     with col3_row1[0]:
+    #         auto_reload = st.checkbox("Auto-reload data", value=False)
 
-        col3_row2 = st.columns(1)
-        with col3_row2[0]:
-            reload = st.button('Reload Now')
+    #     col3_row2 = st.columns(1)
+    #     with col3_row2[0]:
+    #         reload = st.button('Reload Now')
 
 
-    if auto_reload: st_autorefresh(interval=int(reload_time)*1000, key='data_refresh')
+    # if auto_reload: st_autorefresh(interval=int(reload_time)*1000, key='data_refresh')
+    api_url = 'https://lunawaelections-a3ea5ed4a880.herokuapp.com/'
+    st_autorefresh(interval=30000, key='data_refresh')
 
     csv_data = fetch_data(api_url)
     if csv_data:
@@ -66,5 +67,7 @@ def main():
             with row:
                 st.plotly_chart(fig, use_container_width=True)
 
+    reload = st.button('Reload Now')
+    
 if __name__ == '__main__':
     main()
